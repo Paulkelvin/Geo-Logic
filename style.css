@@ -1,0 +1,162 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+header .header__logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 13%;
+  background-color: #fff;
+  box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  text-align: center;
+}
+
+nav li {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-size: 1.2rem;
+  display: block;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  color: #000;
+  background-color: #f5f5f5;
+}
+
+nav a.active {
+  color: #1f2d3d;
+  background-color: #f5f5f5;
+}
+
+main {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12vw;
+  padding: 1.5rem 0;
+  height: 100%;
+  width: 87%;
+}
+
+main article {
+  position: relative;
+  max-width: 85%;
+}
+
+section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+}
+
+h2 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Traversing table styles */
+#options-table {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#options-table th {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+
+  color: green;
+}
+
+#options-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  vertical-align: middle;
+}
+
+#options-table input[type="text"] {
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  padding: 0 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: none;
+  outline: none;
+}
+
+.table-btn {
+  display: block;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.table-btn:hover {
+  background-color: #0062cc;
+}
+
+/* Font Awesome icons styles */
+.fas {
+  margin-right: 0.5rem;
+}
