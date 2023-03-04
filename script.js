@@ -111,7 +111,7 @@ if (tableBody) {
       // Get the total number of rows
       const numRows = tableBody.querySelectorAll("tr").length;
 
-      let x1, y1, x2, y2, prevEasting, prevNorthing;
+      let prevEasting, prevNorthing;
 
       // Loop through each row
       for (let i = 0; i < numRows; i++) {
@@ -126,36 +126,68 @@ if (tableBody) {
           i === 0
             ? row.querySelector(`.northing`)
             : row.querySelector(`.northing${i}`);
-        const distance =
+        const distanceInput =
           i === 0
             ? row.querySelector(`.distance`)
             : row.querySelector(`.distance${i}`);
+        const bearingInput =
+          i === 0
+            ? row.querySelector(`.bearing`)
+            : row.querySelector(`.bearing${i}`);
+        const departure =
+          i === 0
+            ? row.querySelector(`.departure`)
+            : row.querySelector(`.departure${i}`);
+        const latitude =
+          i === 0
+            ? row.querySelector(`.latitude`)
+            : row.querySelector(`.latitude${i}`);
 
-        if (eastingInput && northingInput && prevEasting && prevNorthing) {
+        if (
+          eastingInput &&
+          northingInput &&
+          prevEasting !== undefined &&
+          prevNorthing !== undefined &&
+          eastingInput.value !== "" &&
+          northingInput.value !== ""
+        ) {
           const distanceBetweenPoints = Math.sqrt(
             Math.pow(eastingInput.value - prevEasting, 2) +
               Math.pow(northingInput.value - prevNorthing, 2)
           );
-          if (distance) {
-            distance.value = distanceBetweenPoints.toFixed(2);
+
+          if (distanceInput) {
+            distanceInput.value = distanceBetweenPoints.toFixed(2);
+          }
+
+          let deltaX, deltaY;
+
+          if (bearingInput) {
+            deltaX = eastingInput.value - prevEasting;
+            deltaY = northingInput.value - prevNorthing;
+            // const distanceBetweenPoints = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+            const bearingDegrees = (Math.atan2(deltaY, deltaX) * 180) / Math.PI;
+            const bearing =
+              bearingDegrees >= 0 ? bearingDegrees : bearingDegrees + 360;
+            const degrees = Math.floor(bearing);
+            const minutes = Math.floor((bearing - degrees) * 60);
+            const seconds = ((bearing - degrees - minutes / 60) * 3600).toFixed(
+              2
+            );
+            bearingInput.value = `${degrees}°${minutes}'${seconds}"`;
+          }
+
+          if (departure) {
+            departure.value = deltaX;
+          }
+          if (latitude) {
+            latitude.value = deltaY;
           }
         }
 
         // Update prevEasting and prevNorthing variables
         prevEasting = eastingInput ? eastingInput.value : undefined;
         prevNorthing = northingInput ? northingInput.value : undefined;
-
-        // Listen for changes in the easting and northing input fields
-        if (eastingInput) {
-          getLastRowInputValue(eastingInput, (value) => {
-            console.log(`easting${i}: ${value}`);
-          });
-        }
-        if (northingInput) {
-          getLastRowInputValue(northingInput, (value) => {
-            console.log(`northing${i}: ${value}`);
-          });
-        }
       }
     }
   });
