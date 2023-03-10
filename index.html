@@ -43,6 +43,15 @@
       <article>
         <section id="traversing">
           <h2>Traversing</h2>
+          <div class="switch-container">
+            <input type="checkbox" id="switch" class="switch-input" />
+            <label for="switch" class="switch-label">
+              <!-- <span class="switch-text switch-text-left">Option 1</span> -->
+              <span class="switch-toggle"></span>
+              <!-- <span class="switch-text switch-text-right">Option 2</span> -->
+            </label>
+          </div>
+
           <table id="options-table">
             <thead>
               <tr>
@@ -70,9 +79,39 @@
               </tr>
             </tbody>
           </table>
+          <table id="options-table2">
+            <thead>
+              <tr>
+                <th rowspan="2">S/N222</th>
+                <th rowspan="2">Line</th>
+                <th rowspan="2">Dist(m)</th>
+                <th rowspan="2">Bearing(ddmmss)</th>
+                <th rowspan="2">Departure</th>
+                <th rowspan="2">Latitude</th>
+                <th colspan="2">Coordinates</th>
+              </tr>
+              <td class="easting">Easting(E)</td>
+              <td class="northing">Northing(N)</td>
+            </thead>
+            <tbody>
+              <tr class="row">
+                <td><input class="s/n" type="text" value="" /></td>
+                <td><input class="line" type="text" value="" /></td>
+                <td><input class="distance" type="text" value="" /></td>
+                <td><input class="bearing" type="text" value="" /></td>
+                <td><input class="departure" type="text" value="" /></td>
+                <td><input class="latitude" type="text" value="" /></td>
+                <td><input class="easting" type="text" value="" /></td>
+                <td><input class="northing" type="text" value="" /></td>
+              </tr>
+            </tbody>
+          </table>
           <button id="add-row-btn" class="table-btn">Add Row</button>
           <button id="remove-row-btn" class="table-btn">Remove Row</button>
           <button id="delete-cell-data" class="table-btn">clear data</button>
+          <button id="add-row-btn2" class="table-btn2">Add Row</button>
+          <button id="remove-row-btn2" class="table-btn2">Remove Row</button>
+          <button id="delete-cell-data2" class="table-btn2">clear data</button>
         </section>
         <section id="levelling">
           <h2>Levelling</h2>
