@@ -107,13 +107,15 @@ h2 {
 }
 
 /* Traversing table styles */
-#options-table {
+#options-table,
+#options-table2 {
   margin-top: 2rem;
   width: 100%;
   border-collapse: collapse;
 }
 
-#options-table th {
+#options-table th,
+#options-table2 th {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   padding: 0.2rem;
@@ -122,13 +124,15 @@ h2 {
   color: green;
 }
 
-#options-table td {
+#options-table td,
+#options-table2 td {
   border: 1px solid #ddd;
   padding: 0.5rem;
   vertical-align: middle;
 }
 
-#options-table input[type="text"] {
+#options-table input[type="text"],
+#options-table2 input[type="text"] {
   width: 100%;
   border: none;
   font-size: 1rem;
@@ -152,11 +156,89 @@ h2 {
   transition: all 0.2s ease;
 }
 
+.table-btn2 {
+  display: block;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 .table-btn:hover {
   background-color: #0062cc;
+}
+.table-btn2:hover {
+  background-color: #f44336;
 }
 
 /* Font Awesome icons styles */
 .fas {
   margin-right: 0.5rem;
+}
+
+.switch-container {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.switch-label {
+  display: inline-block;
+  cursor: pointer;
+  background-color: #ddd;
+  border-radius: 20px;
+  position: relative;
+  height: 30px;
+  width: 70px;
+  padding: 3px;
+  transition: background-color 0.3s;
+}
+
+.switch-label .switch-toggle {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: left 0.3s;
+}
+
+.switch-input {
+  display: none;
+}
+
+.switch-input:checked + .switch-label {
+  background-color: #65c665;
+}
+
+.switch-input:checked + .switch-label .switch-toggle {
+  left: 43px;
+}
+
+.switch-text {
+  color: #333;
+  font-weight: bold;
+  line-height: 30px;
+  white-space: nowrap;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.switch-text-left {
+  float: left;
+}
+
+.switch-text-right {
+  float: right;
+}
+
+.hidden {
+  display: none;
 }
