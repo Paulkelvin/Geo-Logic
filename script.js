@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     sections[0].style.display = "block";
 
     const switchInput = document.getElementById("switch");
+    const switchOption1 = document.getElementById("switch-option1");
+    const switchOption2 = document.getElementById("switch-option2");
     const optionsTable = document.getElementById("options-table");
     const optionsTable2 = document.getElementById("options-table2");
     const tableBtn2 = document.querySelectorAll(".table-btn2");
@@ -32,12 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hide the first table and show the second table on load
     optionsTable.classList.add("hidden");
     optionsTable2.classList.remove("hidden");
+    switchOption1.classList.add("hidden");
+    switchOption2.classList.remove("hidden");
 
     if (switchInput) {
       switchInput.addEventListener("change", function () {
         if (this.checked) {
           optionsTable.classList.remove("hidden");
           optionsTable2.classList.add("hidden");
+          switchOption1.classList.remove("hidden");
+          switchOption2.classList.add("hidden");
 
           tableBtn2.forEach((tableBtn) => {
             tableBtn.style.display = "none";
@@ -49,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           optionsTable.classList.add("hidden");
           optionsTable2.classList.remove("hidden");
+          switchOption1.classList.add("hidden");
+          switchOption2.classList.remove("hidden");
 
           tableBtn2.forEach((tableBtn) => {
             tableBtn.style.display = "block";
@@ -98,15 +106,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const addRowBtn2 = document.querySelector("#add-row-btn2");
     const tableBody2 = document.querySelector("#options-table2 tbody");
 
+    // Add event listener for the table body element using event delegation
     tableBody2.addEventListener("input", function (event) {
       const rows = tableBody2.querySelectorAll("tr");
+      const lastRow = rows[rows.length - 1];
 
-      // Check if there are at least two rows
       if (rows.length >= 2) {
         const secondToLastRow = rows[rows.length - 2];
-        const lastRow = rows[rows.length - 1];
 
-        // Check if the last two cells of the second to last row are not empty
         const secondToLastRowInputs = secondToLastRow.querySelectorAll("input");
         const secondToLastEasting = Number(
           secondToLastRowInputs[secondToLastRowInputs.length - 2].value
@@ -116,26 +123,19 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         if (secondToLastEasting && secondToLastNorthing) {
-          // Check if the third and fourth cell of the last row are not empty
           const lastRowInputs = lastRow.querySelectorAll("input");
           const lastRowDistance = Number(lastRowInputs[2].value);
           const lastRowBearing = Number(lastRowInputs[3].value);
 
           if (lastRowDistance && lastRowBearing) {
-            // Calculate for easting and northing
             const bearingRadians = lastRowBearing * (Math.PI / 180);
             const easting =
               secondToLastEasting + lastRowDistance * Math.sin(bearingRadians);
             const northing =
               secondToLastNorthing + lastRowDistance * Math.cos(bearingRadians);
 
-            // Display the results in the last two cells of the last row
             lastRowInputs[lastRowInputs.length - 2].value = easting.toFixed(2);
             lastRowInputs[lastRowInputs.length - 1].value = northing.toFixed(2);
-
-            console.log(
-              `Easting: ${easting.toFixed(2)}, Northing: ${northing.toFixed(2)}`
-            );
           }
 
           if (
@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
             secondToLastEasting &&
             secondToLastNorthing
           ) {
-            // Calculate for deltaX and deltaY
             const deltaX =
               lastRowInputs[lastRowInputs.length - 2].value -
               secondToLastEasting;
@@ -152,42 +151,42 @@ document.addEventListener("DOMContentLoaded", function () {
               lastRowInputs[lastRowInputs.length - 1].value -
               secondToLastNorthing;
 
-            // Display the results in the last two cells of the last row
             lastRowInputs[lastRowInputs.length - 4].value = deltaX.toFixed(2);
             lastRowInputs[lastRowInputs.length - 3].value = deltaY.toFixed(2);
-
-            console.log(
-              `DeltaX: ${deltaX.toFixed(2)}, DeltaY: ${deltaY.toFixed(2)}`
-            );
           }
         }
       }
     });
 
+    // Keep track of the number of rows
+    let rowCount = tableBody2.querySelectorAll("tr").length;
+
+    // Add event listener to the button
     addRowBtn2.addEventListener("click", function () {
       // Create a new row element
       const newRow = document.createElement("tr");
-      newRow.className = `row${tableBody2.querySelectorAll("tr").length}`; // Add a number to the class name
+      newRow.className = `row${rowCount}`; // Add a number to the class name
+
+      // Create the first cell element and append it to the new row
+      const snCell = document.createElement("td");
+      const snInput = document.createElement("input");
+      snInput.type = "text";
+      snInput.value = rowCount + 1; // Add sequential value to the input
+      snInput.disabled = true; // Disable the input so it can't be edited
+      snCell.appendChild(snInput);
+      newRow.appendChild(snCell);
 
       // Get the input elements in the first row
       const firstRowInputs = tableBody2
         .querySelector("tr:first-child")
         .querySelectorAll("input");
 
-      // Get the last row
-      const lastRow = tableBody2.querySelector("tr:last-child");
-
-      // Get the input elements in the last row
-      const lastRowInputs = lastRow.querySelectorAll("input");
-
-      // Create 6 cell elements and append them to the new row
-      for (let i = 0; i < 6; i++) {
+      // Create 5 cell elements and append them to the new row
+      for (let i = 0; i < 5; i++) {
         const newCell = document.createElement("td");
         const newInput = document.createElement("input");
         newInput.type = "text";
-        newInput.className = `${firstRowInputs[i].className}${
-          tableBody2.querySelectorAll("tr").length
-        }`; // Add a number to the class name
+        newInput.className = `${firstRowInputs[i].className}${rowCount}`; // Add a number to the class name
         newCell.appendChild(newInput);
         newRow.appendChild(newCell);
       }
@@ -196,26 +195,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const eastingCell = document.createElement("td");
       const eastingInput = document.createElement("input");
       eastingInput.type = "text";
-      eastingInput.className = `${firstRowInputs[6].className}${
-        tableBody2.querySelectorAll("tr").length
-      }`; // Add a number to the class name
+      eastingInput.className = `${firstRowInputs[5].className}${rowCount}`; // Add a number to the class name
       eastingCell.appendChild(eastingInput);
       newRow.appendChild(eastingCell);
 
       const northingCell = document.createElement("td");
       const northingInput = document.createElement("input");
       northingInput.type = "text";
-      northingInput.className = `${firstRowInputs[7].className}${
-        tableBody.querySelectorAll("tr").length
-      }`; // Add a number to the class name
+      northingInput.className = `${firstRowInputs[6].className}${rowCount}`; // Add a number to the class name
       northingCell.appendChild(northingInput);
       newRow.appendChild(northingCell);
+
+      // Increment the row count
+      rowCount++;
 
       // Append the new row to the table
       tableBody2.appendChild(newRow);
     });
 
     // Add a click event listener to the "Add Row" button
+    let newRowNum = 2; // Initialize the new row number to 1
     addRowBtn.addEventListener("click", () => {
       // Create a new row element
       const newRow = document.createElement("tr");
@@ -262,6 +261,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }`; // Add a number to the class name
       northingCell.appendChild(northingInput);
       newRow.appendChild(northingCell);
+
+      // Set the value of the first input element to the new row number
+      const firstInput = newRow.querySelector("input");
+      firstInput.value = newRowNum;
+
+      // Increment the newRowNum
+      newRowNum++;
 
       // Append the new row to the table
       tableBody.appendChild(newRow);
