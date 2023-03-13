@@ -14,40 +14,46 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
-  gap: 1rem;
   align-items: center;
   background-color: #fff;
   padding: 1rem;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  height: 20%;
+}
+
+header .header__logo {
+  margin-top: 0.5rem;
 }
 
 header .header__logo img {
-  max-width: 100%;
   height: auto;
+  width: 100%;
 }
 
 nav {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 4.3rem;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 13%;
-  background-color: #fff;
-  box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.1);
+  width: 15%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 nav ul {
   display: flex;
   flex-direction: column;
   list-style: none;
-  text-align: center;
+  text-align: left;
+  width: 85%;
+  height: 80%;
 }
 
 nav li {
@@ -58,21 +64,26 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: #444;
-  font-size: 1.2rem;
+  color: #666666;
+  font-family: poppins;
+  font-size: 1rem;
   display: block;
-  padding: 1rem;
+  padding: 0.8rem 2rem 0.8rem 0.6rem;
+  border-radius: 10px;
   transition: all 0.2s ease;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 nav a:hover {
-  color: #000;
-  background-color: #f5f5f5;
+  color: #3cb371;
 }
 
 nav a.active {
-  color: #1f2d3d;
-  background-color: #f5f5f5;
+  color: #f5f5f5;
+  background-color: #3cb371;
 }
 
 main {
@@ -84,7 +95,7 @@ main {
   margin-left: 12vw;
   padding: 1.5rem 0;
   height: 100%;
-  width: 87%;
+  width: 85%;
 }
 
 main article {
@@ -104,6 +115,8 @@ h2 {
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
+  font-family: poppins;
+  color: #555da1;
 }
 
 /* Traversing table styles */
@@ -112,6 +125,8 @@ h2 {
   margin-top: 2rem;
   width: 100%;
   border-collapse: collapse;
+  color: #555555;
+  font-family: poppins;
 }
 
 #options-table th,
@@ -120,8 +135,6 @@ h2 {
   border: 1px solid #ddd;
   padding: 0.2rem;
   font-size: 1.2rem;
-
-  color: green;
 }
 
 #options-table td,
@@ -146,22 +159,26 @@ h2 {
 .table-btn {
   display: block;
   margin-top: 1rem;
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: #007bff;
-  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: #3cb371;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
 }
 
 .table-btn2 {
   display: block;
   margin-top: 1rem;
-  padding: 1rem;
-  font-size: 1.2rem;
-  background-color: #4caf50;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: #3cb371;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -170,10 +187,10 @@ h2 {
 }
 
 .table-btn:hover {
-  background-color: #0062cc;
+  background-color: #308659;
 }
 .table-btn2:hover {
-  background-color: #f44336;
+  background-color: #308659;
 }
 
 /* Font Awesome icons styles */
@@ -189,7 +206,7 @@ h2 {
 .switch-label {
   display: inline-block;
   cursor: pointer;
-  background-color: #ddd;
+  background-color: #555da1;
   border-radius: 20px;
   position: relative;
   height: 30px;
@@ -212,6 +229,20 @@ h2 {
 
 .switch-input {
   display: none;
+}
+
+#switch-option1 {
+  font-family: Poppins, sans-serif;
+  font-size: 0.8rem;
+  color: #555555;
+  font-style: italic;
+}
+
+#switch-option2 {
+  font-family: Poppins, sans-serif;
+  font-size: 0.8rem;
+  color: #555555;
+  font-style: italic;
 }
 
 .switch-input:checked + .switch-label {

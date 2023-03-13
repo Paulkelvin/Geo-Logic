@@ -12,30 +12,37 @@
     <nav>
       <header>
         <div class="header__logo">
-          <img
-            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-            alt="Google Logo"
-          />
+          <img src="/Images/modern-earth-logo.png" alt="Google Logo" />
         </div>
-        <!-- <div class="header__search">
-          <button type="button">Search</button>
-        </div> -->
       </header>
       <ul>
         <li>
-          <a href="#traversing"><i class="fas fa-map-marker"></i>Traversing</a>
+          <a href="#traversing"><i class="fas fa-route"></i> Traversing</a>
         </li>
         <li>
-          <a href="#levelling"><i class="fas fa-level-up-alt"></i> Levelling</a>
+          <a href="#levelling"
+            ><i class="fas fa-ruler-vertical"></i> Levelling</a
+          >
         </li>
         <li>
-          <a href="#option3"><i class="fas fa-cog"></i> Option 3</a>
+          <a href="#option3"
+            ><i class="fas fa-exchange-alt"></i> Transforma...</a
+          >
         </li>
         <li>
-          <a href="#option4"><i class="fas fa-cog"></i> Option 4</a>
+          <a href="#option4"
+            ><i class="fas fa-draw-polygon"></i> Triangulati...</a
+          >
         </li>
         <li>
-          <a href="#option5"><i class="fas fa-cog"></i> Option 5</a>
+          <a href="#option5"
+            ><i class="fas fa-chart-line"></i> Least squar...</a
+          >
+        </li>
+        <li>
+          <a href="#option6"
+            ><i class="fas fa-map-marked-alt"></i> GIS analysis</a
+          >
         </li>
       </ul>
     </nav>
@@ -46,10 +53,10 @@
           <div class="switch-container">
             <input type="checkbox" id="switch" class="switch-input" />
             <label for="switch" class="switch-label">
-              <!-- <span class="switch-text switch-text-left">Option 1</span> -->
               <span class="switch-toggle"></span>
-              <!-- <span class="switch-text switch-text-right">Option 2</span> -->
             </label>
+            <p id="switch-option1">switch to calculate coordinate</p>
+            <p id="switch-option2">switch to calculate bearing</p>
           </div>
 
           <table id="options-table">
@@ -58,7 +65,7 @@
                 <th rowspan="2">S/N</th>
                 <th rowspan="2">Line</th>
                 <th rowspan="2">Dist(m)</th>
-                <th rowspan="2">Bearing(ddmmss)</th>
+                <th rowspan="2">Bearing (DDDMMSS)</th>
                 <th rowspan="2">Departure</th>
                 <th rowspan="2">Latitude</th>
                 <th colspan="2">Coordinates</th>
@@ -68,7 +75,7 @@
             </thead>
             <tbody>
               <tr class="row">
-                <td><input class="s/n" type="text" value="" /></td>
+                <td><input class="s/n" type="text" value="1" /></td>
                 <td><input class="line" type="text" value="" /></td>
                 <td><input class="distance" type="text" value="" /></td>
                 <td><input class="bearing" type="text" value="" /></td>
@@ -82,23 +89,33 @@
           <table id="options-table2">
             <thead>
               <tr>
-                <th rowspan="2">S/N222</th>
+                <th rowspan="2">S/N</th>
                 <th rowspan="2">Line</th>
                 <th rowspan="2">Dist(m)</th>
-                <th rowspan="2">Bearing(ddmmss)</th>
+                <th rowspan="2">Bearing (DDDMMSS)</th>
                 <th rowspan="2">Departure</th>
                 <th rowspan="2">Latitude</th>
                 <th colspan="2">Coordinates</th>
               </tr>
-              <td class="easting">Easting(E)</td>
-              <td class="northing">Northing(N)</td>
+              <tr>
+                <td class="easting">Easting (E)</td>
+                <td class="northing">Northing (N)</td>
+              </tr>
             </thead>
             <tbody>
               <tr class="row">
-                <td><input class="s/n" type="text" value="" /></td>
+                <td><input class="s/n" type="text" value="1" /></td>
                 <td><input class="line" type="text" value="" /></td>
                 <td><input class="distance" type="text" value="" /></td>
-                <td><input class="bearing" type="text" value="" /></td>
+                <td>
+                  <input
+                    class="bearing"
+                    type="text"
+                    value=""
+                    pattern="[0-9]{3}[0-5][0-9][0-5][0-9][0-5][0-9]"
+                    maxlength="7"
+                  />
+                </td>
                 <td><input class="departure" type="text" value="" /></td>
                 <td><input class="latitude" type="text" value="" /></td>
                 <td><input class="easting" type="text" value="" /></td>
@@ -118,15 +135,19 @@
           <!-- Add calculator or other content for Levelling -->
         </section>
         <section id="option3">
-          <h2>Option 3</h2>
+          <h2>Coordinate Transformation</h2>
           <!-- Add calculator or other content for Option 3 -->
         </section>
         <section id="option4">
-          <h2>Option 4</h2>
+          <h2>Triangulation</h2>
           <!-- Add calculator or other content for Option 4 -->
         </section>
         <section id="option5">
-          <h2>Option 5</h2>
+          <h2>Least Square Adjustment</h2>
+          <!-- Add calculator or other content for Option 5 -->
+        </section>
+        <section id="option6">
+          <h2>GIS Analysis</h2>
           <!-- Add calculator or other content for Option 5 -->
         </section>
       </article>
