@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.querySelector("nav");
 
     hamburger.addEventListener("click", () => {
-      navbar.classList.toggle("active");
+      navbar.classList.toggle("show");
     });
 
     // Get all the navigation links and sections
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         // Remove navigation bar upon clicking navlink
-        navbar.classList.remove("active");
+        navbar.classList.remove("show");
 
         // Remove the 'active' class from all navigation links
         navLinks.forEach((link) => {
