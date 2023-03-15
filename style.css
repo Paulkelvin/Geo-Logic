@@ -15,11 +15,9 @@ body {
 header {
   display: flex;
   justify-content: space-around;
-  flex-direction: column;
   align-items: center;
   background-color: #fff;
   padding: 1rem;
-  z-index: 1;
   height: 20%;
 }
 
@@ -32,11 +30,10 @@ header .header__logo img {
   width: 100%;
 }
 
-nav {
+.nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 4.3rem;
   align-items: center;
   position: fixed;
   top: 0;
@@ -44,25 +41,23 @@ nav {
   height: 100vh;
   width: 15%;
   background-color: #ffffff;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 2;
 }
 
-nav ul {
-  display: flex;
-  flex-direction: column;
+.nav ul {
   list-style: none;
   text-align: left;
-  width: 85%;
-  height: 80%;
+  width: 90%;
 }
 
-nav li {
+.nav li {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-nav a {
+.nav a {
   text-decoration: none;
   color: #666666;
   font-family: poppins;
@@ -71,17 +66,13 @@ nav a {
   padding: 0.8rem 2rem 0.8rem 0.6rem;
   border-radius: 10px;
   transition: all 0.2s ease;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
 }
 
-nav a:hover {
+.nav a:hover {
   color: #3cb371;
 }
 
-nav a.active {
+.nav a.active {
   color: #f5f5f5;
   background-color: #3cb371;
 }
@@ -120,6 +111,12 @@ h2 {
 }
 
 /* Traversing table styles */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #options-table,
 #options-table2 {
   margin-top: 2rem;
@@ -144,6 +141,8 @@ h2 {
   vertical-align: middle;
 }
 
+#options-table input[type="number"],
+#options-table2 input[type="number"],
 #options-table input[type="text"],
 #options-table2 input[type="text"] {
   width: 100%;
@@ -167,10 +166,6 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
 }
 
 .table-btn2 {
@@ -186,9 +181,7 @@ h2 {
   transition: all 0.2s ease;
 }
 
-.table-btn:hover {
-  background-color: #308659;
-}
+.table-btn:hover,
 .table-btn2:hover {
   background-color: #308659;
 }
@@ -212,7 +205,11 @@ h2 {
   height: 30px;
   width: 70px;
   padding: 3px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 
 .switch-label .switch-toggle {
@@ -224,25 +221,34 @@ h2 {
   height: 24px;
   background-color: #fff;
   border-radius: 50%;
-  transition: left 0.3s;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 
 .switch-input {
   display: none;
 }
 
-#switch-option1 {
-  font-family: Poppins, sans-serif;
-  font-size: 0.8rem;
-  color: #555555;
-  font-style: italic;
-}
-
+#switch-option1,
 #switch-option2 {
   font-family: Poppins, sans-serif;
   font-size: 0.8rem;
-  color: #555555;
   font-style: italic;
+  animation: colorLoop 3s linear infinite;
+}
+
+@keyframes colorLoop {
+  0%,
+  50%,
+  100% {
+    color: #555da1;
+  }
+  50% {
+    color: #b3b3b3;
+  }
 }
 
 .switch-input:checked + .switch-label {
@@ -272,4 +278,78 @@ h2 {
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 3px;
+    z-index: 2;
+  }
+
+  .hamburger span:first-child {
+    transform-origin: top;
+  }
+
+  .hamburger span:last-child {
+    transform-origin: bottom;
+  }
+
+  td input.line {
+    display: none;
+  }
+
+  .nav {
+    left: -100%;
+    height: 100vh;
+    width: 35%;
+    transition: all 0.9s ease-in-out;
+    z-index: 10;
+  }
+
+  .active {
+    left: 0%;
+    transition: all 0.6s ease-in-out;
+  }
+
+  main {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
+    height: 100%;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+    font-family: poppins;
+    color: #555da1;
+  }
+
+  main article {
+    position: relative;
+    max-width: 100%;
+  }
 }

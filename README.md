@@ -41,6 +41,7 @@ Display the change in X and Y values between each point
 - Use the "Remove Row" button to remove any unnecessary rows.
 - Use the "Clear data" button to clear all data from the table.
 
+
 ## Development
 
 This project uses JavaScript CSS and HTML, and no additional frameworks or libraries are necessary.

@@ -7,13 +7,14 @@
     <title>Geoinformatics Calculator</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="fontawesome-free-6.3.0-web/css/all.css" />
+    <script src="script.js"></script>
   </head>
   <body>
-    <nav>
+    <nav class="nav">
       <header>
-        <div class="header__logo" onclick="window.location.reload()">
+        <!-- <div class="header__logo" onclick="window.location.reload()">
           <img src="/Images/modern-earth-logo.png" alt="Google Logo" />
-        </div>
+        </div> -->
       </header>
       <ul>
         <li>
@@ -46,6 +47,11 @@
         </li>
       </ul>
     </nav>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <main>
       <article>
         <section id="traversing">
@@ -75,14 +81,14 @@
             </thead>
             <tbody>
               <tr class="row">
-                <td><input class="s/n" type="text" value="1" /></td>
-                <td><input class="line" type="text" value="" /></td>
-                <td><input class="distance" type="text" value="" /></td>
-                <td><input class="bearing" type="text" value="" /></td>
-                <td><input class="departure" type="text" value="" /></td>
-                <td><input class="latitude" type="text" value="" /></td>
-                <td><input class="easting" type="text" value="" /></td>
-                <td><input class="northing" type="text" value="" /></td>
+                <td><input class="s/n" type="number" value="1" /></td>
+                <td><input class="line" type="number" value="" /></td>
+                <td><input class="distance" type="number" value="" /></td>
+                <td><input class="bearing" type="number" value="" /></td>
+                <td><input class="departure" type="number" value="" /></td>
+                <td><input class="latitude" type="number" value="" /></td>
+                <td><input class="easting" type="number" value="" /></td>
+                <td><input class="northing" type="number" value="" /></td>
               </tr>
             </tbody>
           </table>
@@ -104,9 +110,9 @@
             </thead>
             <tbody>
               <tr class="row">
-                <td><input class="s/n" type="text" value="1" /></td>
-                <td><input class="line" type="text" value="" /></td>
-                <td><input class="distance" type="text" value="" /></td>
+                <td><input class="s/n" type="number" value="1" /></td>
+                <td><input class="line" type="number" value="" /></td>
+                <td><input class="distance" type="number" value="" /></td>
                 <td>
                   <input
                     class="bearing"
@@ -116,10 +122,12 @@
                     maxlength="7"
                   />
                 </td>
-                <td><input class="departure" type="text" value="" /></td>
-                <td><input class="latitude" type="text" value="" /></td>
-                <td><input class="easting" type="text" value="" /></td>
-                <td><input class="northing" type="text" value="" /></td>
+                <td>
+                  <input class="departure" type="number" value="" />
+                </td>
+                <td><input class="latitude" type="number" value="" /></td>
+                <td><input class="easting" type="number" value="" /></td>
+                <td><input class="northing" type="number" value="" /></td>
               </tr>
             </tbody>
           </table>
@@ -152,6 +160,5 @@
         </section>
       </article>
     </main>
-    <script src="script.js"></script>
   </body>
 </html>
