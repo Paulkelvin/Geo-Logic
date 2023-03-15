@@ -259,7 +259,11 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let i = 0; i < 6; i++) {
         const newCell = document.createElement("td");
         const newInput = document.createElement("input");
-        newInput.type = "number";
+        if (firstRowInputs[i].className.startsWith("bearing")) {
+          newInput.type = "text";
+        } else {
+          newInput.type = "number";
+        }
         newInput.className = `${firstRowInputs[i].className}${
           tableBody.querySelectorAll("tr").length
         }`; // Add a number to the class name
@@ -296,12 +300,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Append the new row to the table
       tableBody.appendChild(newRow);
     });
-
-    // const getLastRowInputValue = (input, callback) => {
-    //   input.addEventListener("input", (event) => {
-    //     callback(event.target.value);
-    //   });
-    // };
 
     if (tableBody) {
       tableBody.addEventListener("input", function (event) {
