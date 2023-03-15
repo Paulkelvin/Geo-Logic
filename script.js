@@ -7,6 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.classList.toggle("show");
     });
 
+    // removes the navbar when the dom is clicked
+    document.addEventListener("click", (event) => {
+      const navElement = document.querySelector("nav");
+
+      if (
+        navElement.classList.contains("show") &&
+        !event.target.classList.contains("hamburger")
+      ) {
+        navElement.classList.remove("show");
+      }
+    });
+
     // Get all the navigation links and sections
     const navLinks = document.querySelectorAll("nav a");
     const sections = document.querySelectorAll("article section");
