@@ -7,18 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.classList.toggle("show");
     });
 
-    // removes the navbar when the dom is clicked
-    document.addEventListener("click", (event) => {
-      const navElement = document.querySelector("nav");
-
-      if (
-        navElement.classList.contains("show") &&
-        !event.target.classList.contains("hamburger")
-      ) {
-        navElement.classList.remove("show");
-      }
-    });
-
     // Get all the navigation links and sections
     const navLinks = document.querySelectorAll("nav a");
     const sections = document.querySelectorAll("article section");
@@ -29,6 +17,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hide all sections
     sections.forEach((section) => {
       section.style.display = "none";
+      section.addEventListener("click", (event) => {
+        // removes the navbar when the dom is clicked
+
+        const navElement = document.querySelector("nav");
+
+        if (
+          navElement.classList.contains("show") &&
+          !event.target.classList.contains("hamburger")
+        ) {
+          navElement.classList.remove("show");
+        }
+      });
     });
 
     // Show the first section
@@ -104,11 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add the 'active' class to the clicked link
         link.classList.add("active");
-
-        // Hide all sections
-        sections.forEach((section) => {
-          section.style.display = "none";
-        });
 
         // Show the corresponding section
         const targetId = link.getAttribute("href");

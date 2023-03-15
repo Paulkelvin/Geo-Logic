@@ -291,7 +291,7 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 24px;
     height: 18px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 5;
   }
 
   .hamburger span {
