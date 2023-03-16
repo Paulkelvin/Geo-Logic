@@ -185,6 +185,10 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: #308659;
 }
 
+input:focus ~ td {
+  border: 1px solid blue;
+}
+
 /* Font Awesome icons styles */
 .fas {
   margin-right: 0.5rem;
