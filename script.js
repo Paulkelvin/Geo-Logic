@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll("nav a");
     const sections = document.querySelectorAll("article section");
 
+    // Show the first section
+    sections[0].style.display = "block";
+
     // Set the first navigation link as active
     navLinks[0].classList.add("active");
 
@@ -31,8 +34,36 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Show the first section
-    sections[0].style.display = "block";
+    // Add event listener to each navigation link
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        // Prevent the default behavior of the link
+        event.preventDefault();
+
+        // Remove navigation bar upon clicking navlink
+        navbar.classList.remove("show");
+
+        // Remove the 'active' class from all navigation links
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        // Add the 'active' class to the clicked link
+        link.classList.add("active");
+
+        // Hide all sections
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+
+        // Show the corresponding section
+        const targetId = link.getAttribute("href");
+        if (targetId) {
+          const targetSection = document.querySelector(targetId);
+          targetSection.style.display = "block";
+        }
+      });
+    });
 
     const switchInput = document.getElementById("switch");
     const switchOption1 = document.getElementById("switch-option1");
@@ -87,32 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
-
-    // Add event listener to each navigation link
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        // Prevent the default behavior of the link
-        event.preventDefault();
-
-        // Remove navigation bar upon clicking navlink
-        navbar.classList.remove("show");
-
-        // Remove the 'active' class from all navigation links
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-
-        // Add the 'active' class to the clicked link
-        link.classList.add("active");
-
-        // Show the corresponding section
-        const targetId = link.getAttribute("href");
-        if (targetId) {
-          const targetSection = document.querySelector(targetId);
-          targetSection.style.display = "block";
-        }
-      });
-    });
 
     // Get the table and button elements
     const table = document.querySelector("#options-table");
