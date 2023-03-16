@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hide all sections
     sections.forEach((section) => {
       section.style.display = "none";
+      sections[0].style.display = "block";
       section.addEventListener("click", (event) => {
         // removes the navbar when the dom is clicked
 
