@@ -373,4 +373,8 @@ td:focus {
     position: relative;
     max-width: 100%;
   }
+
+  .hidden {
+    display: none;
+  }
 }
