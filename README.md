@@ -87,8 +87,8 @@ No installation is necessary for development.
 ### Contributing 🤝
 
 Fork this repository: git clone https://github.com/Paulkelvin/Geo-Logic.git
-Create a new branch for your changes: git checkout -b your-new-branch
-Make your changes and commit them: git commit -m 'Add some feature'
-Push your changes to your forked repository: git push origin your-new-branch
-Submit a pull request to this repository.
+- Create a new branch for your changes: git checkout -b your-new-branch
+- Make your changes and commit them: git commit -m 'Add some feature'
+- Push your changes to your forked repository: git push origin your-new-branch
+- Submit a pull request to this repository.
 We'll review your changes. Thanks for contributing!
